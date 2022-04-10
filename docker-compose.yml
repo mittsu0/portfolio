@@ -18,3 +18,11 @@ services:
       - ./src:/data
       - ./infra/nginx/default.conf:/etc/nginx/conf.d/default.conf
     working_dir: /data
+
+  db:
+    build: ./infra/mysql
+    volumes:
+      - db-store:/var/lib/mysql
+
+volumes:
+  db-store:
