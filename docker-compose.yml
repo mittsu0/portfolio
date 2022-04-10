@@ -1,6 +1,20 @@
 version: "3.9"
 services:
   app:
+    # .infra/phpのDockerfileを元にイメージを作成する
     build: ./infra/php
     volumes:
+    # ./src以下のディレクトリを作成されるコンテナの/dataにマウント（マウント先ディレクトリがない場合は作成される）
       - ./src:/data
+
+  web:
+    # イメージをそのまま使用
+    image: nginx:1.20-alpine
+    # nginxへ外(ホスト側)からコンテナ内へアクセスさせるため公開用のポートを設定
+    # ホスト側ポート:コンテナ側ポートで指定
+    ports:
+      - 8080:80
+    volumes:
+      - ./src:/data
+      - ./infra/nginx/default.conf:/etc/nginx/conf.d/default.conf
+    working_dir: /data
