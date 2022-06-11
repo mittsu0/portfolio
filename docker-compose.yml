@@ -4,8 +4,17 @@ services:
     # .infra/phpのDockerfileを元にイメージを作成する
     build: ./infra/php
     volumes:
-    # ./src以下のディレクトリを作成されるコンテナの/dataにマウント（マウント先ディレクトリがない場合は作成される）
-      - ./src:/data
+      # ./src以下のディレクトリをコンテナの/var/www/htmlにマウント（マウント先ディレクトリがない場合は作成される）
+      - ./src:/var/www/html
+    # コンテナ内の環境変数を設定
+    environment:
+      - DB_CONNECTION=mysql
+      - DB_HOST=db
+      - DB_PORT=3306
+      - DB_DATABASE=${DB_NAME}
+      - DB_USERNAME=${DB_USER}
+      - DB_PASSWORD=${DB_PASSWORD}
+
 
   web:
     # イメージをそのまま使用
@@ -13,14 +22,25 @@ services:
     # nginxへ外(ホスト側)からコンテナ内へアクセスさせるため公開用のポートを設定
     # ホスト側ポート:コンテナ側ポートで指定
     ports:
-      - 8080:80
+      - 8082:80
     volumes:
-      - ./src:/data
+      - ./src:/var/www/html
       - ./infra/nginx/default.conf:/etc/nginx/conf.d/default.conf
-    working_dir: /data
+    # PHP→nginxの順にコンテナを起動
+    depends_pn:
+      - app
+    working_dir: /var/www/html
 
   db:
     build: ./infra/mysql
+    # コンテナへの環境変数の受け渡し
+    # シェル内の環境変数をコンテナに直接受け渡す
+    environment:
+      MYSQL_DATABASE: ${DB_NAME}
+      MYSQL_USER: ${DB_USER}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
+      TZ: 'Asia/Tokyo'
     volumes:
       - db-store:/var/lib/mysql
 
