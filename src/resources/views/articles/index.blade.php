@@ -3,4 +3,7 @@
 
 @section('content')
     @include('nav')
+    <div class="container">
+        
+    </div>
 @endsection
