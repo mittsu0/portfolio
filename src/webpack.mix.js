@@ -21,3 +21,4 @@ mix.webpackConfig({
         children: true,
     },
 });
+
