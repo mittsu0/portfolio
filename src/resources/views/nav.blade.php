@@ -1,4 +1,4 @@
-<nav class="navbar navbar-light bg-light">
+<nav class="navbar navbar-light bg-light fixed-top">
     <div class="container-fluid">
         <a class="navbar-brand" href="#">ONEDARI</a>
         <a class="nav-post nav-link" href=""><i class="fas fa-pen mr-1"></i></a>
@@ -7,27 +7,27 @@
             <i class="fas fa-search"></i>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <form class="nav-form-container">
+            <form class="custom-form-container">
                 <ul class="">
                     <li class="row mb-2">
-                        <input class="nav-form-control col-sm-5" type="search" placeholder="キーワード">
+                        <input class="custom-form-control col-md-5" type="search" placeholder="キーワード">
                     </li>
                     <li class="row mb-2">
                         <label class="col-md-2" for="area">エリア</label>
-                        <select class="col-md-3 nav-form-select" id="area">
+                        <select class="col-md-3 custom-form-select" id="area">
                             <option selected>全て</option>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
+                            @foreach (config('pref') as $pref_id => $pref)
+                                <option value="{{ $pref_id }}">{{ $pref }}</option>
+                            @endforeach
                         </select>
                     </li>
                     <li class="row mb-2">
                         <label class="col-md-2" for="area">カテゴリ</label>
-                        <select class="col-md-3 nav-form-select">
+                        <select class="col-md-3 custom-form-select">
                             <option selected>全て</option>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
+                            @foreach(config('category') as $category_id => $category)
+                                <option value="{{ $category_id }}">{{ $category }}</option>
+                            @endforeach
                         </select>
                     </li>
                     <li class="row">
