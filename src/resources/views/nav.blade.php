@@ -1,7 +1,7 @@
 <nav class="navbar navbar-light bg-light fixed-top">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#">ONEDARI</a>
-        <a class="nav-post nav-link" href=""><i class="fas fa-pen mr-1"></i></a>
+        <a class="navbar-brand" href="{{ route('articles.index') }}">ONEDARI</a>
+        <a class="nav-post nav-link" href="{{ route('articles.create') }}"><i class="fas fa-pen mr-1"></i></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <i class="fas fa-search"></i>
