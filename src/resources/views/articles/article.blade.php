@@ -32,5 +32,5 @@
             <input class="form-check-input" type="checkbox">IDを表示する
         </label>
     </div>
-    <button class="btn btn-outline-primary ms-2 w-50" type="submit">確認画面へ</button>
+    <button class="btn btn-sub ms-2 w-50" type="submit">確認画面へ</button>
 </form>

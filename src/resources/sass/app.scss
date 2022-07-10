@@ -13,6 +13,10 @@
 @import '~@fortawesome/fontawesome-free/scss/solid';
 @import '~@fortawesome/fontawesome-free/scss/brands';
 
+body{
+    background-color: $back-color;
+}
+
 a,
 p {
     text-decoration: none;
@@ -22,6 +26,10 @@ p {
 p {
     margin-bottom: 0.5rem;
     overflow-wrap: break-word;
+}
+
+a:hover{
+    opacity:1;
 }
 
 ul {
@@ -56,18 +64,81 @@ label {
     }
 }
 
-@media (min-width: 1200px) {
+@media(min-width: 1200px){
+    .container-fluid{
+        max-width: 1140px;
+    }
+}
+
+@media (min-width: 992px) {
     .container {
         max-width: 960px;
     }
 
     .container-fluid {
-        max-width: 1140px;
+        max-width: 992px;
     }
 }
 
+//color
+
+.navbar-brand,.navbar-brand:hover, .navbar-toggler, .navbar-toggler:hover,
+.fa-pen, .fa-pen:hover, .nav-label, .btn-sub:hover, .btn-main:hover{
+    color:white;
+}
+
+.btn-sub, .btn-main, .form-control,
+.custom-form-control:focus, .custom-form-select:focus, .form-control:focus{
+    background-color:white;
+}
+
+.btn-sub, .article-list-title, .article-list-title:hover{
+    color:$sub-color;
+}
+
+.btn-sub{
+    border-color:$sub-color;
+}
+
+.btn-sub:hover{
+    background-color: $sub-color;
+}
+
+.btn-sub:hover{
+    border-color: $sub-color;
+}
+
+.navbar{
+    background-color: $main-color;
+}
+
+.btn-main{
+    color:$main-color;
+}
+
+.btn-main{
+    border-color:$main-color;
+}
+
+.btn-main:hover{
+    background-color: $main-color;
+}
+
+.btn-main:hover{
+    border-color: $main-color;
+}
+
+.article-list-header, .article-list-footer .article-list-icon{
+    color:#b3b3b3;
+}
+
+//color-end
+
 .main-container {
     margin-top: 100px;
+    background-color: white;
+    padding-top:1.5rem;
+    padding-bottom:1.5rem;
 }
 
 .navbar-collapse {
@@ -80,13 +151,22 @@ label {
 }
 
 .navbar-brand {
+    color:white;
     font-size: 1.5rem;
-    padding-left: 2.5rem;
     padding-right: 1rem;
+}
+
+.link-item:hover{
+    opacity:40%;
+}
+
+.nav-icon{
+    font-size:1.2rem;
 }
 
 .nav-post {
     margin-left: auto;
+    padding: 0.5rem 1rem;
 }
 
 .navbar-toggler {
@@ -96,14 +176,6 @@ label {
 
 .navbar-toggler:focus {
     box-shadow: none;
-}
-
-.navbar-toggler:hover {
-    color: #0a58ca;
-}
-
-.nav-link {
-    color: rgba(0, 0, 0, 0.55);
 }
 
 .custom-form-container {
@@ -118,7 +190,6 @@ label {
     font-weight: 400;
     line-height: 1.6;
     color: #212529;
-    background-color: #f8fafc;
     background-repeat: no-repeat;
     background-position: right 0.75rem center;
     background-size: 16px 12px;
@@ -128,19 +199,12 @@ label {
     -moz-appearance: none;
 }
 
-.custom-form-select:focus {
-    border-color: #86b7fe;
-    outline: 0;
-    box-shadow: 0 0 0 0.25rem rgb(13 110 253 / 25%);
-}
-
 .custom-form-control {
     padding: 0.375rem 0.75rem;
     font-size: 0.9rem;
     font-weight: 400;
     line-height: 1.6;
     color: var(--bs-body-color);
-    background-color: #f8fafc;
     background-clip: padding-box;
     border: 1px solid #ced4da;
     -webkit-appearance: none;
@@ -150,17 +214,16 @@ label {
     transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
-.custom-form-control:focus {
-    color: var(--bs-body-color);
-    background-color: #f8fafc;
-    border-color: #86b7fe;
+.custom-form-control:focus, .custom-form-select:focus, .btn-sub:focus, .form-control:focus{
+    border-color: $sub-color;
     outline: 0;
-    box-shadow: 0 0 0 0.25rem rgb(13 110 253 / 25%);
+    box-shadow: 0 0 0 0.25rem rgb(106 199 230 / 25%);
 }
 
-.custom-search-button {
-    border: 1px solid #ced4da;
-    border-radius: 0.25rem;
+.btn-main:focus{
+    border-color: $main-color;
+    outline: 0;
+    box-shadow: 0 0 0 0.25rem rgb(255 86 133 / 25%);
 }
 
 .article-list {
@@ -181,7 +244,6 @@ label {
 .article-list-header {
     font-size: 12px;
     vertical-align: top;
-    color: #b3b3b3;
 }
 
 .article-list-footer {
@@ -191,7 +253,7 @@ label {
 }
 
 .article-title {
-    margin: 1rem 0;
+    margin-bottom: 1.2rem;
     padding-bottom: 1rem;
     border-bottom: 1px dashed #ccc;
     font-size: 1.1rem;
