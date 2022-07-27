@@ -11,7 +11,9 @@ Vue.use(BootstrapVue);
 import VueSweetalert2 from 'sweetalert2/dist/sweetalert2.min.css'
 Vue.use(VueSweetalert2);
 
-import TestVue from './components/TestVue'
+//vue components
+import ImagePreviewComponent from './components/ImagePreviewComponent.vue'
+import ArticleGoodBadComponent from './components/ArticleGoodBadComponent.vue'
 
 window.Vue = require('vue').default;
 
@@ -37,6 +39,7 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 const app = new Vue({
     el: '#app',
     components:{
-        TestVue
+        ImagePreviewComponent,
+        ArticleGoodBadComponent,
     }
 });

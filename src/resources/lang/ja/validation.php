@@ -153,6 +153,13 @@ return [
     |
     */
 
-    'attributes' => [],
+    'attributes' => [
+        'title' => 'タイトル',
+        'area' => 'エリア',
+        'category' => 'カテゴリ',
+        'body' => '本文',
+        'image' => '画像',
+        'comment' => 'コメント'
+    ],
 
 ];

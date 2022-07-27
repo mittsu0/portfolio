@@ -3,8 +3,8 @@
         <div class="link-item">
             <a class="navbar-brand" href="{{ route('articles.index') }}">ONEDARI</a>
         </div>
-        <div class="nav-post link-item">
-            <a  href="{{ route('articles.create') }}"><i class="fas fa-pen mr-1 nav-icon"></i></a>
+        <div class="ms-auto">
+            <a  href="{{ route('articles.create') }}" class="py-2 px-3 link-item"><i class="fas fa-pen mr-1 nav-icon"></i></a>
         </div>
         <div>
             <button class="link-item navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
@@ -19,8 +19,8 @@
                         <input class="custom-form-control offset-md-7 col-md-5" type="search" placeholder="キーワード">
                     </li>
                     <li class="row mb-2">
-                        <label class="col-md-2 offset-md-7 nav-label" for="area">エリア</label>
-                        <select class="col-md-3 custom-form-select" id="area">
+                        <label class="col-md-2 offset-md-7 col-4 nav-label" for="area">エリア</label>
+                        <select class="col-md-3 col-8 custom-form-select" id="area">
                             <option selected>全て</option>
                             @foreach (config('pref') as $pref_id => $pref)
                                 <option value="{{ $pref_id }}">{{ $pref }}</option>
@@ -28,8 +28,8 @@
                         </select>
                     </li>
                     <li class="row mb-2">
-                        <label class="col-md-2 offset-md-7 nav-label" for="area">カテゴリ</label>
-                        <select class="col-md-3 custom-form-select">
+                        <label class="col-md-2 offset-md-7 col-4 nav-label" for="area">カテゴリ</label>
+                        <select class="col-md-3 col-8 custom-form-select">
                             <option selected>全て</option>
                             @foreach(config('category') as $category_id => $category)
                                 <option value="{{ $category_id }}">{{ $category }}</option>

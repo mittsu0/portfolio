@@ -1,32 +1,37 @@
 <ul class="mt-4">
-    @for($i=0; $i<15; $i++)
-    <li class="mb-2 article-list">
-        <img class="article-list-image" src="{{ asset('images/no_image.png') }}" alt="" class="src">
-        <div class="ms-2 article-list-body">
+    @foreach($articles as $article)
+    <li class="mb-2 article-list py-2 position-relative link-item">
+        @empty($article->image)
+            <img class="article-list-image" src="{{ asset('images/no_image.png') }}" alt="" class="src">
+        @else
+            <img class="article-list-image" src="{{ asset('storage/UploadedFiles/'.$article->image) }}" alt="" class="src">
+        @endempty
+        <div class="ms-2 w-100">
             <div class="article-list-header">
-                <span class="me-2">2022/6/30(月) 22:00</span>
-                <span>岩手県</span>
+                <span class="me-2">{{ $article->created_at }}</span>
+                <span>{{config("pref.{$article->area}")}}</span>
             </div>
-            <div class="link-item">
+            <div>
                 <p>
-                    <a href="" class="article-list-title fw-bold">岩手県花巻市に、夜に利用できるカフェが欲しい！！</a>
+                    <span class="article-list-title fw-bold">{{ $article->title }}</span>
                 </p>
             </div>
-            <div class="article-list-footer">
-                <a href="" class="me-3 article-list-icon">
-                    <i class="far fa-comment me-1 article-list-icon"></i>
+            <div class="article-list-footer d-flex">
+                <div class="me-3 article-list-icon">
+                    <i class="far fa-comment me-1"></i>
                     <span>10</span>
-                </a>
-                <a href="" class="me-3 article-list-icon">
-                    <i class="far fa-laugh-beam me-1 article-list-icon"></i>
+                </div>
+                <div href="" class="me-3 article-list-icon">
+                    <i class="far fa-laugh-beam me-1"></i>
                     <span>10</span>
-                </a>
-                <a href="" class="article-list-icon">
+                </div>
+                <div href="" class="article-list-icon">
                     <i class="far fa-meh me-1"></i>
                     <span>10</span>
-                </a>
+                </div>
             </div>
         </div>
+        <a href="{{route('articles.show', ['article' => $article->id])}}" class="link"></a>
     </li>
-    @endfor
+    @endforeach
 </ul>
