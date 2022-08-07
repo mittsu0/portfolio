@@ -1,10 +1,11 @@
 @extends('app')
+@section('title','コメント内容の確認 | ONEDARI - オネダリ -')
 
 @section('content')
     @include('nav')
     <div class="container main-container">
         <h1 class="content-title">
-            コメントの確認
+            コメント内容の確認
         </h1>
         <div class="body-wrap">
             <div class="article-list-header d-sm-flex gap-2 mb-2">
@@ -29,4 +30,5 @@
             </form>
         </div>
     </div>
+    @include('footer')
 @endsection

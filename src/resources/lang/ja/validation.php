@@ -159,7 +159,10 @@ return [
         'category' => 'カテゴリ',
         'body' => '本文',
         'image' => '画像',
-        'comment' => 'コメント'
+        'comment' => 'コメント',
+        'keyword' => 'キーワード',
+        'email' => 'メールアドレス',
+        'content' => '内容'
     ],
 
 ];

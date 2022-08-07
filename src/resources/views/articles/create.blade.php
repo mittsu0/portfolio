@@ -1,4 +1,5 @@
 @extends('app')
+@section('title','オネダリを投稿する | ONEDARI - オネダリ -')
 
 @section('content')
     @include('nav')
@@ -6,7 +7,7 @@
         <h1 class="content-title">
             オネダリを投稿する
         </h1>
-        <ul class="mb-3">
+        <ul class="mb-2">
             @foreach ($errors->all() as $error)
                 <li class="error">※{{$error}}</li>
             @endforeach
@@ -42,7 +43,8 @@
                         @if(old('can_display_id')) checked @endif>IDを表示する
                 </label>
             </div>
-            <button class="btn btn-sub ms-2 w-50" type="submit">確認画面へ</button>
+            <button class="btn btn-sub w-50" type="submit">確認画面へ</button>
         </form>
     </div>
+    @include('footer')
 @endsection

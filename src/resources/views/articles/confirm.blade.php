@@ -1,4 +1,5 @@
 @extends('app')
+@section('title','投稿内容の確認 | ONEDARI - オネダリ -')
 
 @section('content')
     @include('nav')
@@ -46,10 +47,13 @@
                 <input type="hidden" name="category" value='{{$data['category']}}'>
                 <input type="hidden" name="body" value='{{$data['body']}}'>
                 <input type="hidden" name="can_display_id" value='{{$data['can_display_id']}}'>
-                <input type="hidden" name="image" value='{{$data['image']}}'>
+                @isset($data['iamge'])
+                    <input type="hidden" name="image" value='{{$data['image']}}'>
+                @endisset
                 <button type="submit" class="btn-grey link-item me-4" name="back">編集する</button>
                 <button type="submit" class="btn btn-sub">投稿する</button>
             </form>
         </div>
     </div>
+    @include('footer')
 @endsection

@@ -14,10 +14,11 @@
 
     <!-- Styles -->
     <link rel="stylesheet" href="{{ mix('/css/app.css') }}">
+    <link rel="stylesheet" href="{{ asset('/css/style.css') }}">
 
 </head>
 <body>
-    <div id="app">
+    <div id="app" class="app">
         @yield('content')
     </div>
 

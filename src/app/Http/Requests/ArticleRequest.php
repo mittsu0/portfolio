@@ -24,10 +24,10 @@ class ArticleRequest extends FormRequest
     public function rules()
     {
         return [
-            'title'=>['required','min:5','max:50'],
-            'area'=>['required'],
-            'category'=>['required'],
-            'body'=>['required','min:5','max:255'],
+            'title'=>['required','min:5','max:50','string'],
+            'area'=>['required','integer'],
+            'category'=>['required','integer'],
+            'body'=>['required','min:5','max:255','string'],
             'image'=>['image','mimes:jpeg,png,jpg,gif','max:1024'],
             'can_display_id'=>['boolean']
         ];

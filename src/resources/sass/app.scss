@@ -64,14 +64,18 @@ img{
 
 //color
 
-.navbar-brand,.navbar-brand:hover, .navbar-toggler, .navbar-toggler:hover,
-.fa-pen, .fa-pen:hover, .nav-label, .btn-sub:hover, .btn-main:hover, .btn-grey{
+.navbar-brand,.navbar-brand:hover, .navbar-toggler, .navbar-toggler:hover,.fa-pen, .fa-pen:hover,
+.footer-link, .footer-link:hover, .nav-label, .btn-sub:hover, .btn-main:hover, .btn-grey,.btn-main.active, .btn-sub.active{
     color:white;
 }
 
 .btn-sub, .btn-main, .form-control,
 .custom-form-control:focus, .custom-form-select:focus, .form-control:focus{
     background-color:white;
+}
+
+.article-list-header, .article-list-footer .article-list-icon, .article-icon{
+    color:#b3b3b3;
 }
 
 .btn-sub, .article-list-title, .article-list-title:hover,.sub-color{
@@ -82,15 +86,15 @@ img{
     border-color:$sub-color;
 }
 
-.btn-sub:hover{
+.btn-sub:hover, .btn-sub.active{
     background-color: $sub-color;
 }
 
-.btn-sub:hover{
+.btn-sub:hover, .btn-sub.active{
     border-color: $sub-color;
 }
 
-.navbar, .btn-main:hover{
+.navbar, .btn-main:hover, .btn-main.active, .footer{
     background-color: $main-color;
 }
 
@@ -102,7 +106,7 @@ img{
     border-color:$main-color;
 }
 
-.btn-main:hover{
+.btn-main:hover, .btn-main.active{
     border-color: $main-color;
 }
 
@@ -110,21 +114,17 @@ img{
     background-color: #ccc;
 }
 
-.article-list-header, .article-list-footer .article-list-icon{
-    color:#b3b3b3;
-}
-
 .error{
     color: $error-color;
 }
 
-//color-end
-
 //hover
+
 .form-check-input:hover,.form-check-label:hover, .btn-grey{
     cursor:pointer;
 }
-//hover-end
+
+//my-style
 
 .main-container {
     margin-top: 90px;
@@ -143,7 +143,6 @@ img{
 }
 
 .navbar-brand {
-    color:white;
     font-size: 1.5rem;
     padding-right: 1rem;
 }
@@ -161,8 +160,15 @@ img{
     cursor: pointer;
 }
 
+.nav-icon-wrap{
+    padding: 0.5rem 1rem;
+    display: flex;
+    align-items: center;
+}
+
 .nav-icon{
-    font-size:1.2rem;
+    font-size:1.125rem;
+    color:white;
 }
 
 .navbar-toggler {
@@ -245,11 +251,8 @@ img{
 }
 
 .content-title {
-    margin-bottom: 1.2rem;
-    // padding-bottom: 1rem;
     color: #6c757d;
     font-weight: bold;
-    // border-bottom: 1px dashed $main-color;
     font-size: 1.1rem;
 }
 
@@ -257,15 +260,6 @@ img{
     width: 120px;
     height: 120px;
     object-fit: cover;
-}
-
-.form-check-input{
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    margin: auto;
-    margin-left:0.5rem;
 }
 
 .article-wrap{
@@ -283,6 +277,10 @@ img{
 .article-footer {
     margin-left: auto;
     width: 8rem;
+}
+
+.article-icon{
+    font-size:1.1rem;
 }
 
 .btn-grey {
@@ -306,7 +304,7 @@ img{
 
 .body-wrap{
     border-bottom: 1px dashed #ccc;
-    margin-bottom: 1.2rem;
+    margin-bottom: 1rem;
     padding-bottom: 1rem;
 }
 
@@ -315,6 +313,69 @@ img{
     vertical-align: top;
     color: $main-color;
 }
+
+.footer{
+    height:40px;
+    position:absolute;
+    bottom:0;
+    width:100%
+}
+
+.footer-link{
+    font-size: 0.8rem;
+    opacity:0.9;
+}
+
+.contact-body-wrap{
+    border-top: 1px dashed #ccc;
+    border-bottom: 1px dashed #ccc;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+// overwrite bootstrap style
+
+.form-check-input{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    margin-left:0.5rem;
+}
+
+.form-check-input:focus {
+    border-color: $sub-color;
+    outline: 0;
+    box-shadow: 0 0 0 0.25rem rgb(106 199 230 / 25%);
+  }
+
+.form-check-input:checked {
+    background-color: $sub-color;
+    border-color: $sub-color;
+}
+
+.page-link {
+    color: $main-color;
+}
+
+.page-item.active .page-link {
+    background-color: $main-color;
+    border-color: $main-color;
+}
+
+.page-link:hover {
+    color: $main-color;
+}
+
+.page-link:focus {
+    color: $main-color;
+    box-shadow: 0 0 0 0.25rem rgb(255 86 133 / 25%);
+}
+
+// media query
 
 @media (min-width: 992px) {
     .container {

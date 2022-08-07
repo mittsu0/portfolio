@@ -9,6 +9,6 @@
         <span class="ms-2">{{ $comment->created_at }}</span>
     </div>
     <div>
-        <p>{{$comment->comment}}</p>
+        <p class="px-2">{{$comment->comment}}</p>
     </div>
 </div>

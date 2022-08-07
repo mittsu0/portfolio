@@ -1,13 +1,13 @@
 <template>
     <div class="d-flex justify-content-end align-items-center me-2">
         <div
-            v-bind:class="[{'main-color': isGoodedBy}, 'me-3 article-list-icon link-item']"
+            v-bind:class="['me-3 article-icon link-item',{'main-color': isGoodedBy}]"
             v-on:click="clickGood">
             <i class="far fa-laugh-beam me-1"></i>
             <span>{{goodsCount}}</span>
         </div>
         <div
-            v-bind:class="[{'sub-color': isBadedBy}, 'me-3 article-list-icon link-item']"
+            v-bind:class="['me-3 article-icon link-item',{'sub-color': isBadedBy}]"
             v-on:click="clickBad">
             <i class="far fa-meh me-1"></i>
             <span>{{badsCount}}</span>

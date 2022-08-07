@@ -1,7 +1,7 @@
 <h1 class="content-title" id="comment-link">
     コメントを投稿する
 </h1>
-<ul class="mb-3">
+<ul class="mb-2">
     @foreach ($errors->all() as $error)
         <li class="error">※{{$error}}</li>
     @endforeach

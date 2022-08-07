@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Good extends Model
 {
     use HasFactory;
-    protected $fillable=[
+    protected $fillable = [
         'article_id',
         'uid'
     ];

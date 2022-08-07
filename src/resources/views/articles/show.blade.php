@@ -1,5 +1,5 @@
 @extends('app')
-@section('title', 'index')
+@section('title', "{$article->title} | ONEDARI - オネダリ -")
 
 @section('content')
     @include('nav')
@@ -18,7 +18,7 @@
                 <div>
                     <div class="article-comment">
                         <i class="far fa-comment"></i>
-                        <span>10件のコメント</span>
+                        <span>{{$comments_count}}件のコメント</span>
                     </div>
                     <h2 class="article-title mb-2">{{$article->title}}</h2>
                 </div>
@@ -36,7 +36,7 @@
                 <span class="ms-2">{{ $article->created_at }}</span>
             </div>
             <div>
-                <p class="mb-2">{{$article->body}}</p>
+                <p class="px-2">{{$article->body}}</p>
                 @if(!empty($article->image))
                     <img src="{{asset('storage/UploadedFiles/'.$article->image)}}" class="w-100" alt="">
                 @endif
@@ -48,5 +48,9 @@
             @php $comment_number++ @endphp
         @endforeach
         @include('comments.form')
+        <div class="d-flex justify-content-center">
+            {{$comments->links()}}
+        </div>
     </div>
+    @include('footer')
 @endsection

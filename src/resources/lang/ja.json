@@ -17,6 +17,7 @@
     "click here to request another.": "こちらをクリックして再送信してください。",
     "Please confirm your password before continuing.": "続行するにはパスワードを入力してください。",
 
-    "Post":"投稿",
-    "Mypage":"マイページ"
+    "area":"エリア",
+    "category":"カテゴリ",
+    "keyword":"キーワード"
 }
