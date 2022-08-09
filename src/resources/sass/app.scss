@@ -15,7 +15,7 @@
 
 body{
     background-color: var($back-color);
-    color: var($back-color);
+    color: var($body-color);
 }
 
 a,
@@ -115,7 +115,7 @@ img{
 }
 
 .error{
-    color: $error-color;
+    color: $main-pastel-color;
 }
 
 //hover
@@ -251,9 +251,10 @@ img{
 }
 
 .content-title {
-    color: #6c757d;
+    color: grey;
     font-weight: bold;
     font-size: 1.1rem;
+    margin-bottom:1rem;
 }
 
 .article-image {
@@ -311,7 +312,7 @@ img{
 .article-comment {
     font-size: 12px;
     vertical-align: top;
-    color: $main-color;
+    color: $main-pastel-color;
 }
 
 .footer{
@@ -333,6 +334,19 @@ img{
     margin-bottom: 1rem;
     padding-top: 1rem;
     padding-bottom: 1rem;
+}
+
+.content-sub-title{
+    text-align: center;
+    color:$main-color;
+    font-weight: bold;
+    font-size:1.0rem;
+}
+
+.concept{
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.0rem;
 }
 
 // overwrite bootstrap style
