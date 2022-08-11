@@ -37,8 +37,9 @@
             @endforeach
         </ul>
         <div class="d-flex justify-content-center">
-            {{$articles->links()}}
+            {{$articles->onEachSide(1)->links('articles.paginator')}}
         </div>
+        {{-- @php dd($articles->onEachSide(1)->links('articles.paginator')) @endphp --}}
     </div>
     @include('footer')
 @endsection
