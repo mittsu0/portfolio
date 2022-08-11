@@ -6,7 +6,7 @@
         @endempty
         <div class="ms-2 w-100">
             <div class="article-list-header">
-                <span class="me-2">{{ $article->created_at }}</span>
+                <span class="me-2">{{ $article->created_at->isoFormat('YYYY/MM/DD(ddd) HH:mm:ss') }}</span>
                 <span>{{config("pref.{$article->area}")}}</span>
             </div>
             <div>

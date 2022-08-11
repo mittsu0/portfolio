@@ -11,6 +11,10 @@ use PhpParser\Node\Expr\Cast\Bool_;
 class Article extends Model
 {
     use HasFactory;
+    protected function serializeDate(\DateTimeInterface $date)
+    {
+        return $date->format('Y/m/d(w) H:i:s');
+    }
     protected $fillable = [
         'title',
         'area',
