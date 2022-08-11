@@ -33,7 +33,7 @@
                 @else
                     <span>非表示</span>
                 @endif
-                <span class="ms-2">{{ $article->created_at }}</span>
+                <span class="ms-2">{{ $article->created_at->isoFormat('YYYY/MM/DD(ddd) HH:mm:ss') }}</span>
             </div>
             <div>
                 <p class="px-2">{{$article->body}}</p>
