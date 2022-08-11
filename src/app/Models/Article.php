@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use PhpParser\Node\Expr\Cast\Bool_;
 
 class Article extends Model
@@ -21,19 +22,19 @@ class Article extends Model
         'ip_address'
     ];
     const UPDATED_AT = null;
-    public function comments()
+    public function comments(): HasMany
     {
         return $this->hasMany(\App\Models\Comment::class);
     }
-    public function countComments()
+    public function countComments(): int
     {
         return $this->comments()->count();
     }
-    public function goods()
+    public function goods(): HasMany
     {
         return $this->hasMany(\App\Models\Good::class);
     }
-    public function bads()
+    public function bads(): HasMany
     {
         return $this->hasMany(\App\Models\Bad::class);
     }
@@ -61,11 +62,6 @@ class Article extends Model
         if (!empty($params['area'])) $query->where('area', $params['area']);
         if (!empty($params['category'])) $query->where('category', $params['category']);
         if (!empty($params['keyword'])) {
-            // $query->where('title',$params['keyword'])->orWhere('body', $params['keyword']);
-            // クエリ；select * from `articles` where `area` = ? and `category` = ? and `title` = ? or `body` = ?
-            //　orの条件は入れ子にしたいが、メソッドチェーンを繋げるだけでは入れ子にできない
-            // where内でクロージャを定義して、その中でwhereを書く
-            // select * from `articles` where `area` = ? and `category` = ? and (`title` = ? or `body` = ?)
             $keyword = '%' . addcslashes($params['keyword'], '%_\\') . '%';
             $query->where(function ($query) use ($keyword) {
                 $query->where('title', 'LIKE', $keyword)->orWhere('body', 'LIKE', $keyword);
