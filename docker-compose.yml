@@ -9,9 +9,9 @@ services:
     # コンテナ内の環境変数を設定
     # コンテナ内の.envファイルに直接記述する必要がなくなる
     environment:
-      - DB_CONNECTION=mysql
-      - DB_HOST=db
-      - DB_PORT=3306
+      - DB_CONNECTION=${DB_CONNECTION}
+      - DB_HOST=${DB_HOST}
+      - DB_PORT=${DB_PORT}
       - DB_DATABASE=${DB_NAME}
       - DB_USERNAME=${DB_USER}
       - DB_PASSWORD=${DB_PASSWORD}
@@ -26,11 +26,12 @@ services:
     volumes:
       - ./src:/var/www/html
       - ./infra/nginx/default.conf:/etc/nginx/conf.d/default.conf
+    environment:
+      - TZ=${TZ:-Asia/Tokyo}
     working_dir: /var/www/html
 
   db:
     build: ./infra/mysql
-    # コンテナへの環境変数の受け渡し
     # シェル内の環境変数をコンテナに直接受け渡す
     environment:
       MYSQL_DATABASE: ${DB_NAME}

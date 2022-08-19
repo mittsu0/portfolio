@@ -1,5 +1,8 @@
 FROM php:8.1-fpm-buster
 
+# デフォルトのShellをオーバーライド
+SHELL ["/bin/bash", "-oeux", "pipefail", "-c"] 
+
 # コンテナ内のサーバー環境変数を設定
 ENV COMPOSER_ALLOW_SUPERUSER=1 \
   COMPOSER_HOME=/composer
