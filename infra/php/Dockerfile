@@ -7,7 +7,13 @@ SHELL ["/bin/bash", "-oeux", "pipefail", "-c"]
 ENV COMPOSER_ALLOW_SUPERUSER=1 \
   COMPOSER_HOME=/composer
 
+# 設定ファイルをImageに埋め込む
 COPY ./php.ini /usr/local/etc/php/php.ini
+
+# cronのインストール
+RUN apt-get update && apt-get install -y \
+  busybox-static \
+  && apt-get clean
 
 # composerのインストール
 COPY --from=composer:2.2 /usr/bin/composer /usr/bin/composer
@@ -22,6 +28,9 @@ RUN apt-get update && \
   apt-get clean && \
   rm -rf /var/lib/apt/lists/* && \
   docker-php-ext-install intl pdo_mysql zip bcmath
+
+# ソースコードをDocker Imageに埋め込む
+COPY ./src /var/www/html
 
 # WORKDIR が存在しないときは生成
 WORKDIR /var/www/html

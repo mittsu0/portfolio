@@ -2,7 +2,9 @@ version: "3.9"
 services:
   app:
     # .infra/phpのDockerfileを元にイメージを作成する
-    build: ./infra/php
+    build:
+      context: .
+      dockerfile: ./infra/php/Dockerfile
     volumes:
       # ./src以下のディレクトリをコンテナの/var/www/htmlにマウント（マウント先ディレクトリがない場合は作成される）
       - ./src:/var/www/html
@@ -31,7 +33,9 @@ services:
     working_dir: /var/www/html
 
   db:
-    build: ./infra/mysql
+    build:
+      context: .
+      dockerfile: ./infra/mysql/Dockerfile
     # シェル内の環境変数をコンテナに直接受け渡す
     environment:
       MYSQL_DATABASE: ${DB_NAME}
