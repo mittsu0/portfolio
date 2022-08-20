@@ -24,6 +24,7 @@ services:
       - AWS_BUCKET=${AWS_BUCKET}
       - AWS_USE_PATH_STYLE_ENDPOINT=${AWS_USE_PATH_STYLE_ENDPOINT}
       - AWS_ENDPOINT=${AWS_ENDPOINT}
+      - AWS_URL=${AWS_URL}
 
   web:
     # イメージをそのまま使用
@@ -51,6 +52,20 @@ services:
       TZ: 'Asia/Tokyo'
     volumes:
       - db-store:/var/lib/mysql
+
+  minio:
+    image: 'minio/minio'
+    container_name: minio
+    environment:
+        MINIO_ROOT_USER: "phper"
+        MINIO_ROOT_PASSWORD: "secret"
+    entrypoint: bash
+    command: -c "/opt/bin/minio server /export --address :9999 --console-address :9001"
+    volumes:
+        - ./minio:/export
+    ports:
+        - '9000:9999'
+        - '9001:9001'
 
 volumes:
   db-store:
