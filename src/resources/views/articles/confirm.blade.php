@@ -10,7 +10,7 @@
         <div>
             <div class="d-flex gap-3 article-wrap">
                 @if(isset($data['image']))
-                    <img src="{{asset('storage/temp/'.$data['image'])}}" class="article-image" alt="">
+                    <img src="{{ Storage::disk('s3')->url('export/temp/'.$data['image']) }}" class="article-image" alt="">
                 @else
                     <img src="{{ asset('images/no_image.png') }}" class="article-image" alt="">
                 @endif
@@ -35,7 +35,7 @@
             <div>
                 <p class="mb-2">{{$data['body']}}</p>
                 @if(isset($data['image']))
-                    <img src="{{asset('storage/temp/'.$data['image'])}}" class="w-100" alt="">
+                    <img src="{{ Storage::disk('s3')->url('export/temp/'.$data['image']) }}" class="w-100" alt="">
                 @endif
             </div>
         </div>
@@ -47,8 +47,8 @@
                 <input type="hidden" name="category" value='{{$data['category']}}'>
                 <input type="hidden" name="body" value='{{$data['body']}}'>
                 <input type="hidden" name="can_display_id" value='{{$data['can_display_id']}}'>
-                @isset($data['iamge'])
-                    <input type="hidden" name="image" value='{{$data['image']}}'>
+                @isset($data['image'])
+                    <input type="hidden" name="image" value='{{ $data['image'] }}'>
                 @endisset
                 <button type="submit" class="btn-grey link-item me-4" name="back">編集する</button>
                 <button type="submit" class="btn btn-sub">投稿する</button>

@@ -9,6 +9,7 @@ use App\Models\Article;
 use App\Models\Good;
 use App\Models\Bad;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File;
 
 class ArticleController extends Controller
 {
@@ -53,11 +54,11 @@ class ArticleController extends Controller
         if ($request->has('back')) {
             return redirect()->route('articles.create')->withInput();
         }
-        $data = $request->only(['title', 'area', 'category', 'body', 'can_display_id', 'image']);
+        $data = $request->only(['title', 'area', 'category', 'body', 'can_display_id','image']);
         $article->fill($data);
         $article->fill(['uid' => $request->uid, 'ip_address' => $request->ip()])->save();
         if (isset($data['image'])) {
-            Storage::move('public/temp/' . $data['image'], 'public/UploadedFiles/' . $data['image']);
+            Storage::disk('s3')->move('temp/'.$data['image'], 'upload/'.$data['image']);
         }
         $article_id = $article->id;
         return view('articles.complete', compact('article_id'));
@@ -88,13 +89,9 @@ class ArticleController extends Controller
         $data = $request->only(['title', 'area', 'category', 'body', 'can_display_id']);
         $image = $request->image;
         if (isset($image)) {
-            //storeメソッド：アップロードファイルをtmpディレクトリから任意のディスクへ移動させる
-            //デフォルトであるpublicディスクは、storage/app/public下を示す
-            //ディスクルートからの相対ファイルパスを返す
-            //dd($image->store('temp','public'));@return temp/画像ファイル名
-            //public/storage(シンボリック)/temp/画像ファイル名」でアクセス可能にしたい
-            $image = str_replace('temp/', '', $image->store('temp', 'public'));
-            $data = array_merge($data, array('image' => $image));
+            $temp_path = Storage::disk('s3')->putFile('temp', $image, 'public');
+            $image = str_replace('temp/','',$temp_path);
+            $data = array_merge($data, compact('image'));
         }
         return view('articles.confirm', compact('data'));
     }
