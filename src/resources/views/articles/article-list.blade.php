@@ -2,7 +2,7 @@
         @empty($article->image)
             <img class="article-list-image" src="{{ asset('images/no_image.png') }}" alt="" class="src">
         @else
-            <img class="article-list-image" src="{{ asset('storage/UploadedFiles/'.$article->image) }}" alt="" class="src">
+            <img class="article-list-image" src="{{ Storage::disk('s3')->url('export/upload/'.$article->image) }}" alt="" class="src">
         @endempty
         <div class="ms-2 w-100">
             <div class="article-list-header">

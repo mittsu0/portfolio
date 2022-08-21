@@ -54,18 +54,30 @@ services:
       - db-store:/var/lib/mysql
 
   minio:
-    image: 'minio/minio'
-    container_name: minio
+    image: 'minio/minio:latest'
     environment:
-        MINIO_ROOT_USER: "phper"
-        MINIO_ROOT_PASSWORD: "secret"
+        MINIO_ROOT_USER: ${AWS_ACCESS_KEY_ID}
+        MINIO_ROOT_PASSWORD: ${AWS_SECRET_ACCESS_KEY}
     entrypoint: bash
     command: -c "/opt/bin/minio server /export --address :9999 --console-address :9001"
     volumes:
         - ./minio:/export
     ports:
-        - '9000:9999'
-        - '9001:9001'
+        - 9000:9999
+        - 9001:9001
+  # minio:
+  #   image: minio/minio
+  #   ports:
+  #     - target: 9000
+  #       published: ${MINIO_PORT:-9000}
+  #       protocol: tcp
+  #       mode: host
+  #   volumes:
+  #     - ./minio:/data
+  #   environment:
+  #     MINIO_ACCESS_KEY: ${AWS_ACCESS_KEY_ID}
+  #     MINIO_SECRET_KEY: ${AWS_SECRET_ACCESS_KEY}
+  #   command: server /minio
 
 volumes:
   db-store:
