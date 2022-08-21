@@ -16,7 +16,7 @@
                     <img src="{{ Storage::disk('s3')->url('export/upload/' . $article->image) }}" class="article-image"
                         alt="">
                     @endif
-                    <div>ß
+                    <div>
                         <div class="article-comment">
                             <i class="far fa-comment"></i>
                             <span>{{ $comments_count }}件のコメント</span>
