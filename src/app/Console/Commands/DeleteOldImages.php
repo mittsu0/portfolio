@@ -19,7 +19,7 @@ class DeleteOldImages extends Command
      *
      * @var string
      */
-    protected $description = 'storage/app/public/tempのimageから、24時間以上経過したファイルを削除します';
+    protected $description = 's3のimageから、24時間以上経過したファイルを削除します';
 
     /**
      * Create a new command instance.
@@ -39,11 +39,11 @@ class DeleteOldImages extends Command
     public function handle()
     {
         $now = Carbon::now();
-        $files = \Storage::files('public/temp/');
+        $files = \Storage::disk('s3')->files('temp/');
         foreach($files as $file){
-            $file_time = new Carbon(\Storage::lastModified($file));
+            $file_time = new Carbon(\Storage::disk('s3')->lastModified($file));
             if($now->diffInDays($file_time) >= 1){
-                \Storage::delete($file);
+                \Storage::disk('s3')->delete($file);
             }
         }
     }

@@ -8,8 +8,6 @@ services:
     volumes:
       # ./src以下のディレクトリをコンテナの/var/www/htmlにマウント（マウント先ディレクトリがない場合は作成される）
       - ./src:/var/www/html
-    # コンテナ内の環境変数を設定
-    # コンテナ内の.envファイルに直接記述する必要がなくなる
     environment:
       - APP_DEBUG=${APP_DEBUG}
       - DB_CONNECTION=${DB_CONNECTION}
@@ -65,19 +63,6 @@ services:
     ports:
         - 9000:9999
         - 9001:9001
-  # minio:
-  #   image: minio/minio
-  #   ports:
-  #     - target: 9000
-  #       published: ${MINIO_PORT:-9000}
-  #       protocol: tcp
-  #       mode: host
-  #   volumes:
-  #     - ./minio:/data
-  #   environment:
-  #     MINIO_ACCESS_KEY: ${AWS_ACCESS_KEY_ID}
-  #     MINIO_SECRET_KEY: ${AWS_SECRET_ACCESS_KEY}
-  #   command: server /minio
 
 volumes:
   db-store:

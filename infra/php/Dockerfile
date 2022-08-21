@@ -13,8 +13,10 @@ COPY ./infra/php/php.ini /usr/local/etc/php/php.ini
 # composerのインストール
 COPY --from=composer:2.2 /usr/bin/composer /usr/bin/composer
 
-# cronのインストール
+# cronのインストール+設定
 RUN apt-get update && apt-get install -y busybox-static
+COPY ./infra/php/crontab /var/spool/cron/crontabs/root
+CMD ["busybox", "crond", "-f", "-L", "/dev/stderr"]
 
 # node.jsのインストール
 RUN curl -sL https://deb.nodesource.com/setup_12.x | bash -
