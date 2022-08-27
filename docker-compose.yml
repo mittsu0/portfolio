@@ -1,13 +1,21 @@
 version: "3.9"
+volumes:
+  php-fpm-socket:
+  db-store:
 services:
   app:
-    # .infra/phpのDockerfileを元にイメージを作成する
     build:
       context: .
-      dockerfile: ./infra/php/Dockerfile
+      dockerfile: ./docker/php/Dockerfile
     volumes:
-      # ./src以下のディレクトリをコンテナの/var/www/htmlにマウント（マウント先ディレクトリがない場合は作成される）
-      - ./src:/var/www/html
+      - type: volume
+        source: php-fpm-socket
+        target: /var/run/php-fpm
+        volume:
+          nocopy: true
+      - type: bind
+        source: ./src
+        target: /var/www/html
     environment:
       - APP_DEBUG=${APP_DEBUG}
       - DB_CONNECTION=${DB_CONNECTION}
@@ -25,31 +33,44 @@ services:
       - AWS_URL=${AWS_URL}
 
   web:
-    # イメージをそのまま使用
-    image: nginx:1.20-alpine
-    # nginxへ外(ホスト側)からコンテナ内へアクセスさせるため公開用のポートを設定
-    # ホスト側ポート:コンテナ側ポートで指定
+    build:
+      context: .
+      dockerfile: ./docker/nginx/Dockerfile
     ports:
-      - 8080:80
+      - target: 80
+        published: ${WEB_PORT:-8080}
+        protocol: tcp
+        mode: host
     volumes:
-      - ./src:/var/www/html
-      - ./infra/nginx/default.conf:/etc/nginx/conf.d/default.conf
-    environment:
-      - TZ=${TZ:-Asia/Tokyo}
-    working_dir: /var/www/html
+      - type: volume
+        source: php-fpm-socket
+        target: /var/run/php-fpm
+        volume:
+          nocopy: true
+      - type: bind
+        source: ./src
+        target: /var/www/html
 
   db:
     build:
       context: .
-      dockerfile: ./infra/mysql/Dockerfile
-    environment:
-      MYSQL_DATABASE: ${DB_NAME}
-      MYSQL_USER: ${DB_USER}
-      MYSQL_PASSWORD: ${DB_PASSWORD}
-      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
-      TZ: 'Asia/Tokyo'
+      dockerfile: ./docker/mysql/Dockerfile
+    ports:
+      - target: 3306
+        published: ${DB_PORT:-3306}
+        protocol: tcp
+        mode: host
     volumes:
-      - db-store:/var/lib/mysql
+      - type: volume
+        source: db-store
+        target: /var/lib/mysql
+        volume:
+          nocopy: true
+    environment:
+      - MYSQL_DATABASE=${DB_NAME:-laravel_local}
+      - MYSQL_USER=${DB_USER:-phper}
+      - MYSQL_PASSWORD=${DB_PASS:-secret}
+      - MYSQL_ROOT_PASSWORD=${DB_PASS:-secret}
 
   minio:
     image: 'minio/minio:latest'
@@ -63,6 +84,3 @@ services:
     ports:
         - 9000:9999
         - 9001:9001
-
-volumes:
-  db-store:
