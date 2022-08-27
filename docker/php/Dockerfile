@@ -32,6 +32,12 @@ RUN apt-get update && \
 COPY ./docker/php/php-fpm.d/zzz-www.conf /usr/local/etc/php-fpm.d/zzz-www.conf
 COPY ./docker/php/php.ini /usr/local/etc/php/php.ini
 
+# cronのインストール+設定
+RUN apt-get update && apt-get install -y busybox-static
+COPY ./docker/php/crontab /var/spool/cron/crontabs/root
+
+# CMD ["busybox", "crond", "-f", "-L", "/dev/stderr"]
+
 # RUN composer install -q -n --no-ansi --no-dev --no-scripts --no-progress --prefer-dist \
 #   && chown -R www-data:www-data ./ \
 #   && chmod -R 777 storage bootstrap/cache \
