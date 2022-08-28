@@ -30,8 +30,21 @@ RUN apt-get update && \
   composer config -g repos.packagist composer https://packagist.org
 
 COPY ./docker/php/php-fpm.d/zzz-www.conf /usr/local/etc/php-fpm.d/zzz-www.conf
-COPY ./docker/php/php.ini /usr/local/etc/php/php.ini
+COPY ./docker/php/php.prod.ini /usr/local/etc/php/php.ini
 
 # cronのインストール+設定
 RUN apt-get update && apt-get install -y busybox-static
 COPY ./docker/php/crontab /var/spool/cron/crontabs/root
+
+COPY ./src /var/www/html/
+
+RUN composer install --optimize-autoloader --no-dev \
+  && chmod -R 777 storage bootstrap/cache \
+  && php artisan optimize:clear \
+  && php artisan optimize \
+  && php artisan cache:clear \
+  && php artisan config:clear \
+  && php artisan route:clear \
+  && php artisan view:clear \
+  && npm ci \
+  && npm run prod
