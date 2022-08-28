@@ -31,8 +31,8 @@ class ContactMail extends Mailable
     public function build()
     {
         return $this->from('onedari@gmail.com')
-        ->subject('お問い合わせ完了のお知らせ')
-        ->view('contacts.mail')
-        ->with(['data' => $this->data]);
+            ->subject('お問い合わせ完了のお知らせ')
+            ->view('contacts.mail')
+            ->with(['data' => $this->data]);
     }
 }

@@ -29,7 +29,7 @@
                     <li class="page-item">
                         <a href="{{ $paginator->url($last_page) }}" class="page-link">{{ $last_page }}</a>
                     </li>
-                {{-- 後半 --}}
+                    {{-- 後半 --}}
                 @elseif($current_page > $last_page - $side_link_count + 1)
                     <li class="page-item">
                         <a href="{{ $paginator->url($first_page) }}" class="page-link">{{ $first_page }}</a>
@@ -42,7 +42,7 @@
                             <a href="{{ $paginator->url($i) }}" class="page-link">{{ $i }}</a>
                         </li>
                     @endfor
-                {{-- 中盤 --}}
+                    {{-- 中盤 --}}
                 @else
                     <li class="page-item">
                         <a href="{{ $paginator->url($first_page) }}" class="page-link">{{ $first_page }}</a>

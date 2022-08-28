@@ -14,13 +14,13 @@ class ArticleFactory extends Factory
     public function definition()
     {
         return [
-            'title'=>$this->faker->realText(30),
-            'area' => $this->faker->numberBetween(1,47),
-            'category'=> $this->faker->numberBetween(1,6),
-            'body'=>$this->faker->realText(200),
-            'can_display_id'=>$this->faker->numberBetween(0,1),
-            'uid' => substr(base64_encode(random_bytes(10)),0,9),
-            'ip_address'=> $this->faker->ipv4
+            'title' => $this->faker->realText(30),
+            'area' => $this->faker->numberBetween(1, 47),
+            'category' => $this->faker->numberBetween(1, 6),
+            'body' => $this->faker->realText(200),
+            'can_display_id' => $this->faker->numberBetween(0, 1),
+            'uid' => substr(base64_encode(random_bytes(10)), 0, 9),
+            'ip_address' => $this->faker->ipv4
         ];
     }
 }
