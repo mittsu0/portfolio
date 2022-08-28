@@ -1,6 +1,6 @@
 /app/Http/Middleware/CreateUid.php
 /node_modules
-/public/css
+/public/css/app.css
 /public/hot
 /public/js
 /public/mix-manifest.json
