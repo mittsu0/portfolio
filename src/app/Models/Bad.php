@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Bad extends Model
 {
     use HasFactory;
-    protected $fillable=[
+    protected $fillable = [
         'article_id',
         'uid'
     ];

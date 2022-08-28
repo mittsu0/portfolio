@@ -9,27 +9,23 @@ use App\Models\Article;
 use App\Models\Good;
 use App\Models\Bad;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\File;
 
 class ArticleController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
+     * @param \App\Http\Requests\ArticleRequest $request
      * @return \Illuminate\Http\Response
      */
     public function index(ArticleSearchRequest $request)
     {
-        //Article::all() @return コレクションオブジェクト
-        //$article->with(['comments','goods','bads'])->orderBy('created_at','desc') @return Builderクラス(sqlはまだ発行されない)
         $params = $request->only(['area', 'category', 'keyword', 'popularity']);
         if (!empty($params)) {
-            // dump(Article::search($params)->toSql());
-            // dump(Article::search($params)->getBindings());
-            $articles = Article::search($params)->paginate(10)->withQueryString();;
+            $articles = Article::search($params)->paginate(100)->withQueryString();
             return view('articles.index', compact('articles', 'params'));
         }
-        $articles = Article::withCount(['comments', 'goods', 'bads'])->orderBy('created_at', 'desc')->paginate(10);
+        $articles = Article::withCount(['comments', 'goods', 'bads'])->orderBy('created_at', 'desc')->paginate(100);
         return view('articles.index', compact('articles'));
     }
 
@@ -46,7 +42,8 @@ class ArticleController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
+     * @param \App\Models\Article $article
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request, Article $article)
@@ -54,11 +51,11 @@ class ArticleController extends Controller
         if ($request->has('back')) {
             return redirect()->route('articles.create')->withInput();
         }
-        $data = $request->only(['title', 'area', 'category', 'body', 'can_display_id','image']);
+        $data = $request->only(['title', 'area', 'category', 'body', 'can_display_id', 'image']);
         $article->fill($data);
         $article->fill(['uid' => $request->uid, 'ip_address' => $request->ip()])->save();
         if (isset($data['image'])) {
-            Storage::disk('s3')->move('temp/'.$data['image'], 'upload/'.$data['image']);
+            Storage::disk('s3')->move('temp/' . $data['image'], 'upload/' . $data['image']);
         }
         $article_id = $article->id;
         return view('articles.complete', compact('article_id'));
@@ -67,34 +64,44 @@ class ArticleController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param \App\Models\Article $article
      * @return \Illuminate\Http\Response
      */
     public function show(Request $request, Article $article)
     {
-        /**
-         * ルートモデルバインディングを使用(ルートパラメータからORMを自動的に解決する仕組み)
-         * ルートパラメータを任意の名前で定義し、値にはORMのidを定義
-         * コントローラのメソッドにルートパラメータ名と同じ名前でタイプヒンティングで引数を定義
-         */
-        $comments = $article->comments()->orderBy('created_at', 'desc')->paginate(10);
+        $comments = $article->comments()->orderBy('created_at', 'desc')->paginate(100);
         $comments_count = $article->countComments();
         $uid = $request->uid;
         $request->session()->put('uid', $uid);
         return view('articles.show', compact('article', 'comments', 'comments_count', 'uid'));
     }
 
+    /**
+     * Display form confirmation screen.
+     *
+     * @param \App\Http\Requests\ArticleRequest $request
+     * @return \Illuminate\Http\Response
+     */
     public function confirm(ArticleRequest $request)
     {
         $data = $request->only(['title', 'area', 'category', 'body', 'can_display_id']);
         $image = $request->image;
         if (isset($image)) {
             $temp_path = Storage::disk('s3')->putFile('temp', $image, 'public');
-            $image = str_replace('temp/','',$temp_path);
+            $image = str_replace('temp/', '', $temp_path);
             $data = array_merge($data, compact('image'));
         }
         return view('articles.confirm', compact('data'));
     }
+
+    /**
+     * Add "good" to specific articles.
+     *
+     * @param \Illuminate\Http\Request $request
+     * @param \App\Models\Article $article
+     * @return Json
+     */
     public function good(Request $request, Article $article)
     {
         $uid = $request->session()->get('uid');
@@ -109,6 +116,14 @@ class ArticleController extends Controller
             'bads_count' => $article->countBads()
         ];
     }
+
+    /**
+     * Remove "good" from specific articles.
+     *
+     * @param \Illuminate\Http\Request $request
+     * @param \App\Models\Article $article
+     * @return Json
+     */
     public function ungood(Request $request, Article $article)
     {
         $uid = $request->session()->get('uid');
@@ -118,6 +133,14 @@ class ArticleController extends Controller
             'goods_count' => $article->countGoods()
         ];
     }
+
+    /**
+     * Add "bad" to specific articles.
+     *
+     * @param \Illuminate\Http\Request $request
+     * @param \App\Models\Article $article
+     * @return Json
+     */
     public function bad(Request $request, Article $article)
     {
         $uid = $request->session()->get('uid');
@@ -132,6 +155,14 @@ class ArticleController extends Controller
             'bads_count' => $article->countBads()
         ];
     }
+
+    /**
+     * Remove "bad" from specific articles.
+     *
+     * @param \Illuminate\Http\Request $request
+     * @param \App\Models\Article $article
+     * @return Json
+     */
     public function unbad(Request $request, Article $article)
     {
         $uid = $request->session()->get('uid');

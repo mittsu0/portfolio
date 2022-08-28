@@ -17,4 +17,3 @@ class Comment extends Model
     ];
     const UPDATED_AT = null;
 }
-

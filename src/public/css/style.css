@@ -1,0 +1,6 @@
+.app{
+    position: relative;
+    padding-bottom: 40px;
+    min-height: calc(100vh - 90px);
+    box-sizing: border-box;
+}

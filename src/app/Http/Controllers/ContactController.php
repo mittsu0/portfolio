@@ -9,15 +9,20 @@ use App\Mail\ContactMail;
 
 class ContactController extends Controller
 {
-    public function create(){
+    public function create()
+    {
         return view('contacts.create');
     }
-    public function confirm(ContactRequest $request){
+
+    public function confirm(ContactRequest $request)
+    {
         $data = $request->only(['email', 'title', 'content']);
-        return view('contacts.confirm',compact('data'));
+        return view('contacts.confirm', compact('data'));
     }
-    public function complete(ContactRequest $request){
-        if($request->has('back')){
+
+    public function complete(ContactRequest $request)
+    {
+        if ($request->has('back')) {
             return redirect()->route('contacts.create')->withInput();
         }
         $data = $request->only(['email', 'title', 'content']);

@@ -46,9 +46,6 @@ class Article extends Model
     {
         return $this->goods()->count();
     }
-    //"query" => "select count(*) as aggregate from...
-    //$this->goods @return Collection $this->goods() @return hasMany
-    //$this->goods->count()とすると、select * で当該データをコレクションで取ってきてから、コレクションをcountする
     public function countBads(): int
     {
         return $this->bads()->count();
