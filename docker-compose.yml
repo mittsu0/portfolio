@@ -4,6 +4,7 @@ volumes:
   db-store:
 services:
   app:
+    image: app:dev
     build:
       context: .
       dockerfile: ./docker/php/Dockerfile
@@ -33,6 +34,7 @@ services:
       - AWS_URL=${AWS_URL}
 
   web:
+    image: web:dev
     build:
       context: .
       dockerfile: ./docker/nginx/Dockerfile
@@ -52,6 +54,7 @@ services:
         target: /var/www/html
 
   db:
+    image: db:dev
     build:
       context: .
       dockerfile: ./docker/mysql/Dockerfile
