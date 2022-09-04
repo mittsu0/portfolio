@@ -9,5 +9,5 @@ php artisan route:clear
 php artisan view:clear
 php artisan migrate --force
 php artisan storage:link
-npm ci
+npm install --production
 npm run prod
