@@ -1,4 +1,4 @@
-FROM php:8.0-fpm-buster
+FROM --platform=linux/amd64 php:8.0-fpm-buster
 
 WORKDIR /var/www/html
 
@@ -29,8 +29,7 @@ RUN apt-get update && \
   composer config -g process-timeout 3600 && \
   composer config -g repos.packagist composer https://packagist.org
 
-COPY ./docker/php/php-fpm.d/zzz-www.conf /usr/local/etc/php-fpm.d/zzz-www.conf
-COPY ./docker/php/php.prod.ini /usr/local/etc/php/php.ini
+COPY ./docker/php/php.ini /usr/local/etc/php/php.ini
 
 # cronのインストール+設定
 RUN apt-get update && apt-get install -y busybox-static
@@ -39,6 +38,7 @@ COPY ./docker/php/crontab /var/spool/cron/crontabs/root
 COPY ./src /var/www/html/
 
 RUN composer install --optimize-autoloader --no-dev \
+  && chown -R www-data:www-data ./ \
   && chmod -R 777 storage bootstrap/cache \
   && php artisan optimize:clear \
   && php artisan optimize \
@@ -46,5 +46,3 @@ RUN composer install --optimize-autoloader --no-dev \
   && php artisan config:clear \
   && php artisan route:clear \
   && php artisan view:clear \
-  && npm ci \
-  && npm run prod

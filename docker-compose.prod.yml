@@ -1,51 +1,13 @@
 version: "3.9"
-volumes:
-  php-fpm-socket:
-  db-store:
 services:
   app:
-    image: app:prod
+    image: app:latest
     build:
       context: .
       dockerfile: ./docker/php/Dockerfile.prod
-    volumes:
-      - type: volume
-        source: php-fpm-socket
-        target: /var/run/php-fpm
-        volume:
-          nocopy: true
-      - type: bind
-        source: ./src
-        target: /var/www/html
-    environment:
-      - APP_DEBUG=${APP_DEBUG_PROD}
-      - DB_CONNECTION=${DB_CONNECTION_PROD}
-      - DB_HOST=${DB_HOST_PROD}
-      - DB_PORT=${DB_PORT_PROD}
-      - DB_DATABASE=${DB_NAME_PROD}
-      - DB_USERNAME=${DB_USER_PROD}
-      - DB_PASSWORD=${DB_PASSWORD_PROD}
-      - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID_PROD}
-      - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY_PROD}
-      - AWS_DEFAULT_REGION=${AWS_DEFAULT_REGION_PROD}
-      - AWS_BUCKET=${AWS_BUCKET_PROD}
 
-  web:
-    image: web:prod
+  nginx:
+    image: nginx:latest
     build:
       context: .
-      dockerfile: ./docker/nginx/Dockerfile
-    ports:
-      - target: 80
-        published: ${WEB_PORT:-8080}
-        protocol: tcp
-        mode: host
-    volumes:
-      - type: volume
-        source: php-fpm-socket
-        target: /var/run/php-fpm
-        volume:
-          nocopy: true
-      - type: bind
-        source: ./src
-        target: /var/www/html
+      dockerfile: ./docker/nginx/Dockerfile.prod

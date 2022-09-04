@@ -12,7 +12,6 @@
 /src/.styleci.yml
 /src/.phpunit.result.cache
 /src/.php-cs-fixer.cache
-/src/package.json
 /src/phpunit.xml
 /src/README.md
 /src/phpspec.yml
