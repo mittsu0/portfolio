@@ -19,6 +19,8 @@ services:
         target: /var/www/html
     environment:
       - APP_DEBUG=${APP_DEBUG}
+      - APP_ENV=${APP_ENV}
+      - LOG_LEVEL=${LOG_LEVEL}
       - DB_CONNECTION=${DB_CONNECTION}
       - DB_HOST=${DB_HOST}
       - DB_PORT=${DB_PORT}

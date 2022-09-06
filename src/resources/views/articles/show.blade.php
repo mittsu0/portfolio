@@ -13,7 +13,7 @@
                 @empty($article->image)
                     <img src="{{ asset('images/no_image.png') }}" class="article-image" alt="">
                 @else
-                    <img src="{{ Storage::disk('s3')->url('export/upload/' . $article->image) }}" class="article-image"
+                    <img src="{{ Storage::disk('s3')->url('upload/' . $article->image) }}" class="article-image"
                         alt="">
                     @endif
                     <div>
@@ -28,7 +28,7 @@
             </div>
             <div class="body-wrap">
                 <div class="article-list-header mb-2">
-                    <span>1.　ID:</span>
+                    <span>ID:</span>
                     @if ($article->can_display_id)
                         <span>{{ $article->uid }}</span>
                     @else
@@ -43,7 +43,7 @@
                     @endif
                 </div>
             </div>
-            @php $comment_number=2 @endphp
+            @php $comment_number=1 @endphp
             @foreach ($comments as $comment)
                 @include('comments.comment')
                 @php $comment_number++ @endphp
