@@ -10,7 +10,7 @@
         <div>
             <div class="d-flex gap-3 article-wrap">
                 @if (isset($data['image']))
-                    <img src="{{ Storage::disk('s3')->url('export/temp/' . $data['image']) }}" class="article-image"
+                    <img src="{{ Storage::disk('s3')->url('temp/' . $data['image']) }}" class="article-image"
                         alt="">
                 @else
                     <img src="{{ asset('images/no_image.png') }}" class="article-image" alt="">
@@ -36,7 +36,7 @@
             <div>
                 <p class="mb-2">{{ $data['body'] }}</p>
                 @if (isset($data['image']))
-                    <img src="{{ Storage::disk('s3')->url('export/temp/' . $data['image']) }}" class="w-100" alt="">
+                    <img src="{{ Storage::disk('s3')->url('temp/' . $data['image']) }}" class="w-100" alt="">
                 @endif
             </div>
         </div>
