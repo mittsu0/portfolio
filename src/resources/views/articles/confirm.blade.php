@@ -26,7 +26,7 @@
         </div>
         <div class="body-wrap">
             <div class="article-list-header d-sm-flex gap-2 mb-2">
-                <span>1.　ID:</span>
+                <span>ID:</span>
                 @if ($data['can_display_id'])
                     <span>表示する</span>
                 @else
