@@ -34,9 +34,9 @@
                 @endif
             </div>
             <div>
-                <p class="mb-2">{{ $data['body'] }}</p>
+                <p class="px-2">{{ $data['body'] }}</p>
                 @if (isset($data['image']))
-                    <img src="{{ Storage::disk('s3')->url('temp/' . $data['image']) }}" class="w-100" alt="">
+                    <img src="{{ Storage::disk('s3')->url('temp/' . $data['image']) }}" class="w-100 mt-2" alt="">
                 @endif
             </div>
         </div>

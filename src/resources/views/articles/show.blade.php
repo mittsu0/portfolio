@@ -39,7 +39,7 @@
                 <div>
                     <p class="px-2">{{ $article->body }}</p>
                     @if (!empty($article->image))
-                        <img src="{{ Storage::disk('s3')->url('upload/' . $article->image) }}" class="w-100" alt="">
+                        <img src="{{ Storage::disk('s3')->url('upload/' . $article->image) }}" class="w-100 mt-2" alt="">
                     @endif
                 </div>
             </div>
