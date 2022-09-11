@@ -4,7 +4,7 @@
 @section('content')
     @include('nav')
     <div class="container main-container">
-        <h1 class="content-title text-center mb-4">ONEDARI -オネダリ- は、みんなの「ホシイ」を発信・共有するためのサービスです</h1>
+        <h1 class="content-title text-center mb-4">ONEDARI -オネダリ- は、みんなの「ホシイ」を共有するためのサービスです</h1>
         <div>
             <div class="mb-4">
                 <h2 class="content-sub-title">CONCEPT</h2>
@@ -22,7 +22,7 @@
                     <i class="far fa-meh me-1 sub-color"></i>
                     で評価し、「どこで」「どれだけの人が」「どんなものを」望んでいるのか、ひと目で分かるようにしました。
                 </p>
-                <p>ONEDARIは、ユーザーの需要＝ある地域における住民の需要を明確にすることで、企業や行政機関の街づくりに貢献し、
+                <p>ONEDARIは、ユーザーの需要（＝ある地域における住民の需要）を明確にすることで、企業や行政機関の街づくりに貢献し、
                     地方でも不自由なくモノやサービスが利用できる世界を目指します。</p>
             </div>
         </div>

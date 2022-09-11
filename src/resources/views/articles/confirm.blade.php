@@ -26,7 +26,7 @@
         </div>
         <div class="body-wrap">
             <div class="article-list-header d-sm-flex gap-2 mb-2">
-                <span>1.　ID:</span>
+                <span>ID:</span>
                 @if ($data['can_display_id'])
                     <span>表示する</span>
                 @else
@@ -34,9 +34,9 @@
                 @endif
             </div>
             <div>
-                <p class="mb-2">{{ $data['body'] }}</p>
+                <p class="px-2">{{ $data['body'] }}</p>
                 @if (isset($data['image']))
-                    <img src="{{ Storage::disk('s3')->url('temp/' . $data['image']) }}" class="w-100" alt="">
+                    <img src="{{ Storage::disk('s3')->url('temp/' . $data['image']) }}" class="w-100 mt-2" alt="">
                 @endif
             </div>
         </div>
@@ -52,7 +52,7 @@
                     <input type="hidden" name="image" value='{{ $data['image'] }}'>
                 @endisset
                 <button type="submit" class="btn-grey link-item me-4" name="back">編集する</button>
-                <button type="submit" class="btn btn-sub">投稿する</button>
+                <button type="submit" class="btn btn-sub active link-item">投稿する</button>
             </form>
         </div>
     </div>

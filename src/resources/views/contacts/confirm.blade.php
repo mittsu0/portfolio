@@ -28,7 +28,7 @@
                 <input type="hidden" name="title" value="{{ $data['title'] }}">
                 <input type="hidden" name="content" value="{{ $data['content'] }}">
                 <button type="submit" class="btn-grey link-item me-4" name="back">編集する</button>
-                <button type="submit" class="btn btn-sub">送信する</button>
+                <button type="submit" class="btn btn-sub active link-item">送信する</button>
             </form>
         </div>
     </div>

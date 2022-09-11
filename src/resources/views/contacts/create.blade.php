@@ -26,7 +26,7 @@
                 <p>お問い合わせ内容</p>
                 <textarea class="form-control" name="content">{{ old('content') }}</textarea>
             </div>
-            <button class="btn btn-sub w-50" type="submit">確認画面へ</button>
+            <button class="btn btn-sub w-50 active link-item" type="submit">確認画面へ</button>
         </form>
     </div>
     @include('footer')

@@ -23,11 +23,11 @@
             <ul class="d-flex gap-2">
                 <li class="flex-grow-1">
                     <button type="submit" form="search"
-                        class="btn btn-main w-100 @if (!isset($params['popularity'])) active @endif">新着順</button>
+                        class="btn btn-main link-item w-100 @if (!isset($params['popularity'])) active @endif">新着順</button>
                 </li>
                 <li class="flex-grow-1">
                     <button type="submit" form="search" name="popularity" value="1"
-                        class="btn btn-sub w-100 @isset($params['popularity']) active @endisset">人気順</button>
+                        class="btn btn-sub link-item w-100 @isset($params['popularity']) active @endisset">人気順</button>
                 </li>
             </ul>
         </div>
