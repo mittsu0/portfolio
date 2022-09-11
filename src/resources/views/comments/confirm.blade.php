@@ -26,7 +26,7 @@
                 <input type="hidden" name="comment" value='{{ $data['comment'] }}'>
                 <input type="hidden" name="can_display_id" value='{{ $data['can_display_id'] }}'>
                 <button type="submit" class="btn-grey link-item me-4" name="back">編集する</button>
-                <button type="submit" class="btn btn-sub">投稿する</button>
+                <button type="submit" class="btn btn-sub active link-item">投稿する</button>
             </form>
         </div>
     </div>

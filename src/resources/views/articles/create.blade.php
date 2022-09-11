@@ -45,7 +45,7 @@
                         @if (old('can_display_id')) checked @endif>IDを表示する
                 </label>
             </div>
-            <button class="btn btn-sub w-50" type="submit">確認画面へ</button>
+            <button class="btn btn-sub w-50 active link-item" type="submit">確認画面へ</button>
         </form>
     </div>
     @include('footer')

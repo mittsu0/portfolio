@@ -52,7 +52,7 @@
                     <input type="hidden" name="image" value='{{ $data['image'] }}'>
                 @endisset
                 <button type="submit" class="btn-grey link-item me-4" name="back">編集する</button>
-                <button type="submit" class="btn btn-sub">投稿する</button>
+                <button type="submit" class="btn btn-sub active link-item">投稿する</button>
             </form>
         </div>
     </div>

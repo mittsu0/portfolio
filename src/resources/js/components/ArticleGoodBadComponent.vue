@@ -12,7 +12,7 @@
             <i class="far fa-meh me-1"></i>
             <span>{{badsCount}}</span>
         </div>
-        <a href="#comment-link" class="btn btn-sub">コメントを投稿</a>
+        <a href="#comment-link" class="btn btn-sub active link-item">コメントを投稿</a>
     </div>
 </template>
 

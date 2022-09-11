@@ -42,7 +42,7 @@
                         </select>
                     </li>
                     <li class="row">
-                        <button class="btn btn-sub col-md-5 offset-md-7" type="submit">
+                        <button class="btn btn-sub active link-item col-md-5 offset-md-7" type="submit">
                             <i class="fas fa-search"></i>
                         </button>
                     </li>

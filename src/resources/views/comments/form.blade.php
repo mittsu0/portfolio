@@ -19,5 +19,5 @@
                 @if (old('can_display_id')) checked @endif>IDを表示する
         </label>
     </div>
-    <button class="btn btn-sub ms-2" type="submit">コメントを投稿する</button>
+    <button class="btn btn-sub ms-2 active link-item" type="submit">コメントを投稿する</button>
 </form>

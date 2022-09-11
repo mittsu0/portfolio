@@ -69,7 +69,11 @@ img{
     color:white;
 }
 
-.btn-sub, .btn-main, .form-control, .form-control:focus{
+// .btn-sub, .btn-main, .form-control, .form-control:focus{
+//     background-color:white;
+// }
+
+.form-control, .form-control:focus{
     background-color:white;
 }
 
@@ -219,11 +223,17 @@ img{
     transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
-.custom-form-control:focus, .custom-form-select:focus, .btn-sub:focus, .form-control:focus{
+.custom-form-control:focus, .custom-form-select:focus, .form-control:focus{
     border-color: $sub-color;
     outline: 0;
     box-shadow: 0 0 0 0.25rem rgb(106 199 230 / 25%);
     background-color: white;
+}
+
+.btn-sub:focus{
+    border-color: $sub-color;
+    outline: 0;
+    box-shadow: 0 0 0 0.25rem rgb(106 199 230 / 25%);
 }
 
 .btn-main:focus{
@@ -391,6 +401,10 @@ img{
 .page-link:focus {
     color: $main-color;
     box-shadow: 0 0 0 0.25rem rgb(255 86 133 / 25%);
+}
+
+.btn{
+    font-weight: 500;
 }
 
 // media query
