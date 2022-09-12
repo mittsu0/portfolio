@@ -31,12 +31,12 @@
                 </li>
             </ul>
         </div>
-        <ul class="mb-3">
+        <ul>
             @foreach ($articles as $article)
                 @include('articles.article-list')
             @endforeach
         </ul>
-        <div class="d-flex justify-content-center">
+        <div class="d-flex justify-content-center mt-2">
             {{ $articles->onEachSide(1)->links('articles.paginator') }}
         </div>
         {{-- @php dd($articles->onEachSide(1)->links('articles.paginator')) @endphp --}}
