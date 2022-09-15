@@ -20,11 +20,11 @@
                     <i class="far fa-comment me-1"></i>
                     <span>{{ $article->comments_count }}</span>
                 </div>
-                <div href="" class="me-3 main-color">
+                <div class="me-3 main-color">
                     <i class="far fa-laugh-beam me-1"></i>
                     <span>{{ $article->goods_count }}</span>
                 </div>
-                <div href="" class="sub-color">
+                <div lass="sub-color">
                     <i class="far fa-meh me-1"></i>
                     <span>{{ $article->bads_count }}</span>
                 </div>
