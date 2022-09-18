@@ -9,7 +9,7 @@
         </h1>
         <ul class="mb-2">
             @foreach ($errors->all() as $error)
-                <li class="error">※{{ $error }}</li>
+                <li class="list error">※{{ $error }}</li>
             @endforeach
         </ul>
         <form action="{{ route('contacts.confirm') }}" class="" method="post" enctype="multipart/form-data">

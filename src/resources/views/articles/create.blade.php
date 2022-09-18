@@ -9,7 +9,7 @@
         </h1>
         <ul class="mb-2">
             @foreach ($errors->all() as $error)
-                <li class="error">※{{ $error }}</li>
+                <li class="list error">※{{ $error }}</li>
             @endforeach
         </ul>
         <form action="{{ route('articles.confirm') }}" class="" method="post" enctype="multipart/form-data">
@@ -42,7 +42,7 @@
                 <label class="form-check-label">
                     <input type="hidden" name="can_display_id" value="0">
                     <input class="form-check-input" type="checkbox" name="can_display_id" value="1"
-                        @if (old('can_display_id')) checked @endif>IDを表示する
+                        @if (old('can_display_id')) checked @endif>IDを表示してなりすまし防止
                 </label>
             </div>
             <button class="btn btn-sub w-50 active link-item" type="submit">確認画面へ</button>

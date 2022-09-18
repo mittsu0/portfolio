@@ -3,7 +3,7 @@
 </h1>
 <ul class="mb-2">
     @foreach ($errors->all() as $error)
-        <li class="error">※{{ $error }}</li>
+        <li class="list error">※{{ $error }}</li>
     @endforeach
 </ul>
 <form action="{{ route('comments.confirm', ['article' => $article->id]) }}" class="" method="post">
@@ -16,7 +16,7 @@
             <input type="hidden" name="article_id" value="{{ $article->id }}">
             <input type="hidden" name="can_display_id" value="0">
             <input class="form-check-input" type="checkbox" name="can_display_id" value="1"
-                @if (old('can_display_id')) checked @endif>IDを表示する
+                @if (old('can_display_id')) checked @endif>IDを表示してなりすまし防止
         </label>
     </div>
     <button class="btn btn-sub ms-2 active link-item" type="submit">コメントを投稿する</button>

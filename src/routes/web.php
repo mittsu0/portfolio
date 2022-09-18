@@ -36,3 +36,5 @@ Route::post('/contacts/confirm', [App\Http\Controllers\ContactController::class,
 Route::post('/contacts/complete', [App\Http\Controllers\ContactController::class, 'complete'])->name('contacts.complete');
 
 Route::get('/about', [App\Http\Controllers\AboutController::class, 'index'])->name('abouts.index');
+
+Route::get('/tos', [App\Http\Controllers\TosController::class, 'index'])->name('tos.index');

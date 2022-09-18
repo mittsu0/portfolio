@@ -26,9 +26,6 @@
                     地方でも不自由なくモノやサービスが利用できる世界を目指します。</p>
             </div>
         </div>
-        <div>
-            <h3></h3>
-        </div>
     </div>
     @include('footer')
 @endsection

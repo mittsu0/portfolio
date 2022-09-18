@@ -1,9 +1,8 @@
-    <li class="mb-2 article-list pb-2 position-relative link-item">
+    <li class="mb-2 list article-list pb-2 position-relative link-item">
         @empty($article->image)
-            <img class="article-list-image" src="{{ asset('images/no_image.png') }}" alt="" class="src">
+            <img class="article-list-image" src="{{ asset('images/no_image.png') }}">
         @else
-            <img class="article-list-image" src="{{ Storage::disk('s3')->url('upload/' . $article->image) }}"
-                alt="" class="src">
+            <img class="article-list-image" src="{{ Storage::disk('s3')->url('upload/' . $article->image) }}">
         @endempty
         <div class="ms-2 w-100">
             <div class="article-list-header">
