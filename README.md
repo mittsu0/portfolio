@@ -4,8 +4,8 @@
 
 ### URL
 
-アプリ: https://onedari-app.com
-Qiita: https://qiita.com/mittsu0/items/4ad2e5359b21e3934d38
+* アプリ: https://onedari-app.com
+* Qiita: https://qiita.com/mittsu0/items/4ad2e5359b21e3934d38
 
 #### 投稿一覧画面（ホーム画面）
 
