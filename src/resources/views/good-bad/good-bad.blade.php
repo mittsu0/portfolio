@@ -3,6 +3,6 @@
     v-bind:initial-goods-count="@json($article->countGoods())"
     good-endpoint={{ route('articles.good',$article->id )}}
     v-bind:initial-is-baded-by="@json($article->isBadedBy($uid))"
-    v-bind:initial-bads="@json($article->countBads())"
+    v-bind:initial-bads-count="@json($article->countBads())"
     bad-endpoint={{ route('articles.bad',$article->id) }}
 ></article-good-bad-component>

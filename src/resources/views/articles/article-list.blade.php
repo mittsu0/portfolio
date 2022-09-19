@@ -1,9 +1,8 @@
-    <li class="mb-2 article-list pb-2 position-relative link-item">
+    <li class="mb-2 list article-list pb-2 position-relative link-item">
         @empty($article->image)
-            <img class="article-list-image" src="{{ asset('images/no_image.png') }}" alt="" class="src">
+            <img class="article-list-image" src="{{ asset('images/no_image.png') }}">
         @else
-            <img class="article-list-image" src="{{ Storage::disk('s3')->url('upload/' . $article->image) }}"
-                alt="" class="src">
+            <img class="article-list-image" src="{{ Storage::disk('s3')->url('upload/' . $article->image) }}">
         @endempty
         <div class="ms-2 w-100">
             <div class="article-list-header">
@@ -20,11 +19,11 @@
                     <i class="far fa-comment me-1"></i>
                     <span>{{ $article->comments_count }}</span>
                 </div>
-                <div href="" class="me-3 main-color">
+                <div class="me-3 main-color">
                     <i class="far fa-laugh-beam me-1"></i>
                     <span>{{ $article->goods_count }}</span>
                 </div>
-                <div href="" class="sub-color">
+                <div class="sub-color">
                     <i class="far fa-meh me-1"></i>
                     <span>{{ $article->bads_count }}</span>
                 </div>

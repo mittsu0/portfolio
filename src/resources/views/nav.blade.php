@@ -17,11 +17,11 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <form class="custom-form-container" method="GET" action="{{ route('articles.index') }}" id="search">
                 <ul class="">
-                    <li class="row mb-2">
+                    <li class="list row mb-2">
                         <input class="custom-form-control offset-md-7 col-md-5" type="search" placeholder="キーワード"
                             name="keyword" value="@if (isset($params['keyword'])) {{ $params['keyword'] }} @endif">
                     </li>
-                    <li class="row mb-2">
+                    <li class="list row mb-2">
                         <label class="col-md-2 offset-md-7 col-4 nav-label" for="area">エリア</label>
                         <select class="col-md-3 col-8 custom-form-select" id="area" name="area">
                             <option value="" selected>全て</option>
@@ -31,7 +31,7 @@
                             @endforeach
                         </select>
                     </li>
-                    <li class="row mb-2">
+                    <li class="list row mb-2">
                         <label class="col-md-2 offset-md-7 col-4 nav-label" for="category">カテゴリ</label>
                         <select class="col-md-3 col-8 custom-form-select" id="category" name="category">
                             <option value="" selected>全て</option>
@@ -41,7 +41,7 @@
                             @endforeach
                         </select>
                     </li>
-                    <li class="row">
+                    <li class="list row">
                         <button class="btn btn-sub active link-item col-md-5 offset-md-7" type="submit">
                             <i class="fas fa-search"></i>
                         </button>
