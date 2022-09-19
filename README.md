@@ -4,7 +4,8 @@
 
 ### URL
 
-https://onedari-app.com
+アプリ: https://onedari-app.com
+Qiita: https://qiita.com/mittsu0/items/4ad2e5359b21e3934d38
 
 #### 投稿一覧画面（ホーム画面）
 
@@ -67,6 +68,10 @@ https://onedari-app.com
 * AWS: ECS(Fargate), RDS, Route 53, ALB, ACM, S3, VPC, IAM 
 
 ## DB設計
+
+ユーザー登録機能がないのでusersテーブルはありません。
+その代わりに、各テーブルにuidカラムをもたせることでユーザーの紐付けを行っています。
+uidは、クライントのIPアドレスと日付等から生成しています。
 
 ![](/images/er.drawio.png)
 
