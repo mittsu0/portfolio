@@ -23,7 +23,7 @@
                     <i class="far fa-laugh-beam me-1"></i>
                     <span>{{ $article->goods_count }}</span>
                 </div>
-                <div lass="sub-color">
+                <div class="sub-color">
                     <i class="far fa-meh me-1"></i>
                     <span>{{ $article->bads_count }}</span>
                 </div>

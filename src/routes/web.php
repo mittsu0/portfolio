@@ -15,8 +15,6 @@ use Illuminate\Support\Facades\Route;
 
 // Auth::routes();
 
-Route::get('/test', [App\Http\Controllers\TestController::class, 'test']);
-
 Route::get('/', [App\Http\Controllers\ArticleController::class, 'index'])->name('articles.index');
 Route::post('/articles/confirm', [App\Http\Controllers\ArticleController::class, 'confirm'])->name('articles.confirm');
 Route::resource('/articles', App\Http\Controllers\ArticleController::class)->only(['create']);
