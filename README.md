@@ -10,9 +10,9 @@
 
 #### 投稿一覧画面（ホーム画面）
 
-![](/images/index.ping)
+![](/images/index.png)
 
-![](/images/index_popularity.png.ping)
+![](/images/index_popularity.png)
 
 ![](/images/index.gif)
 
@@ -25,18 +25,18 @@
 
 ![](/images/create_new_post.png)
 
-![](/images/new_post.ping)
+![](/images/new_post.png)
 
-![](/images/new_post.gif.ping)
+![](/images/new_post.gif)
 
 * ヘッダーナビの投稿ボタンから新規投稿画面に移動できます。
 * タイトル、エリア、カテゴリ、本文、ID表示の有無を選択して投稿します。
 
 #### 投稿詳細画面
 
-![](/images/post_details_good.gif.ping)
+![](/images/post_details_good.gif)
 
-![](/images/post_details_comment.gif.ping)
+![](/images/post_details_comment.gif)
 
 * 一覧画面で個々の投稿をクリックすると詳細画面に移動します。
 * 投稿に対してGoodやBadをつけたり、コメントを投稿することができます。
